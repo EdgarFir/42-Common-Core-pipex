@@ -6,11 +6,34 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:36:12 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/05 00:27:32 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:16:56 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	clean_quotes(char **split)
+{
+	int		i;
+	size_t len;
+	char	*trimm;
+	
+	i = 0;
+	while (split[i])
+	{
+		len = ft_strlen(split[i]);
+		if (len >= 2)
+		{
+			trimm = ft_strtrim(split[i], "\"'");
+			if (!trimm)
+				return (0);
+			free(split[i]);
+			split[i] = trimm;
+		}
+		i++;
+	}
+	return (1);
+}
 
 void check_env_path(char **envp)
 {
@@ -43,26 +66,3 @@ void make_init_checks(char **argv, int argc, char **envp)
 	check_env_path(envp);
 	check_files(argv[1], argv[argc - 1]);
 }
-
-void clean_quotes(char **split)
-{
-	int i;
-	char *temp;
-	size_t len;
-	
-	i = 0;
-	while (split[i])
-	{
-		len = ft_strlen(split[i]);
-		if (len >= 2 &&
-			((split[i][0] == '"' && split[i][len - 1] == '"') ||
-			 (split[i][0] == '\'' && split[i][len - 1] == '\'')))
-		{
-			temp = split[i];
-			split[i] = ft_strtrim(split[i], "\"'");
-			free(temp);
-		}
-		i++;
-	}
-}
-

@@ -23,9 +23,7 @@ $(NAME): ${OBJS}
 	make -C libft bonus
 	${CC} ${OBJS} -I /libft -L libft/. -lft -o ${NAME}
 
-bonus: ${BONUS_OBJS}
-	make -C libft bonus
-	${CC} ${BONUS_OBJS} -I /libft -L libft/. -lft -o ${NAME}
+
 
 clean:
 	make -C libft clean

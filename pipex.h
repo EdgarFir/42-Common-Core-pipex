@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 23:28:48 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/05 00:46:32 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:29:56 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@
 # include <sys/wait.h>
 
 // Checks
-void make_init_checks(char **argv, int argc, char **envp);
-void check_files(char *infile, char *outfile);
-void check_env_path(char **envp);
-void build_execve_args(char **execve_args, char *cmd_path, char *cmd_flags);
-
+void	make_init_checks(char **argv, int argc, char **envp);
+void	check_files(char *infile, char *outfile);
+void	check_env_path(char **envp);
+int		clean_quotes(char **split);
 
 // Path
 char	*get_envp_path(char **envp);
@@ -41,7 +40,7 @@ void	close_fds(int *fds_lst, int fds_total, int pid_index, int all);
 // Processes
 int		proccess_sons(pid_t *pids, int *fd_list, char **argv, char **envp, int cmds_count);
 void	redirect_stdin_stdout(int ft_stdin, int ft_stdout);
-void	proccess_father(pid_t *pids, int pids_size);
+void	proccess_father(int *fd_lst, pid_t *pids, int pids_size);
 int		exec_cmd(char *cmd_flags, char **envp);
 
 // Mem

@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:42:18 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/04 21:16:28 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:47:30 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_cmd_path(char *cmd, char **envp)
 	while (envp_path_dirs[i])
 	{
 		cmd_path = ft_strjoin(envp_path_dirs[i], cmd_dir);
-		if (access(cmd_path, F_OK) == 0)
+		if (access(cmd_path, F_OK || X_OK) == 0)
 		{
 			free(cmd_dir);
 			clean_split(envp_path_dirs);
