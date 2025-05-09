@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 23:28:48 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/05 17:29:56 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/05 19:30:25 by edfreder          #+#    #+#             */
+/*   Updated: 2025/05/09 17:24:28 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,46 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-// Checks
-void	make_init_checks(char **argv, int argc, char **envp);
-void	check_files(char *infile, char *outfile);
-void	check_env_path(char **envp);
-int		clean_quotes(char **split);
+typedef	struct	s_cmd
+{
+	int		stdin_fd;
+	int		stdout_fd;
+	int		next_stdin_fd;
+	pid_t	pid;
+	char	*cmd_flags;
+	struct s_cmd *next;
+}	t_cmd;
+
+
+// Errors
+int		clean_and_return_status(char **split1, char **split2, char *s1, int status);
+int		validate_files_and_cmd(int cmd_index, t_cmd *pid, char *cmd_path, char **argv);
+char	*clean_and_return_str(char **split1, char **split2, char *s1, char *str);
+int 	valid_file(char **argv, int infile, int outfile);
+int		validate_files_and_cmd(int cmd_index, t_cmd *pid, char *cmd_path, char **argv);
+
+// Utils
+int		send_custom_error(char *pre, char *msg1, char *msg2, int has_perror, int status);
+void	close_fds(t_cmd *pids_lst);
+char 	*get_arg(char **argv, int index);
+
 
 // Path
 char	*get_envp_path(char **envp);
-char	*get_cmd_path(char *cmd, char **envp);
+char 	*get_cmd_path(t_cmd *pid, char **envp);
 
-// Fds 
-void	build_fds_lst(int *fds_lst, int *files_fd, int argc);
-void	open_files(int *files_fd, char *infile, char *outfile);
-int		build_pipes(int *fd_list, int pipes_count);
-int		add_pipe(int *fd_list, int fd_list_ind);
-void	close_fds(int *fds_lst, int fds_total, int pid_index, int all);
+// Struct
+t_cmd	**build_pids_lst(t_cmd **pids_lst, char **argv, int argc);
+void	clean_lst_exit(t_cmd **pids_lst, int status);
 
+// Processs
+int		redirect_stdin_stdout(t_cmd *pid);
+void	proccess_father(t_cmd *pids_lst);
+int		proccess_son(t_cmd *pids_lst, t_cmd *pid, char **envp, char *cmd_path);
+int		exec_cmd(t_cmd *pid, char **envp, char *cmd_path);
 
-// Processes
-int		proccess_sons(pid_t *pids, int *fd_list, char **argv, char **envp, int cmds_count);
-void	redirect_stdin_stdout(int ft_stdin, int ft_stdout);
-void	proccess_father(int *fd_lst, pid_t *pids, int pids_size);
-int		exec_cmd(char *cmd_flags, char **envp);
-
-// Mem
-void	clean_lsts_and_exit(int *lst1, char *lst2, int exit_status);
-void	clean_split(char **split);
-void 	clean_pids_fds_and_exit(int *fds_lst, pid_t *pids_lst, int exit_status);
-int 	clean_and_get_error(char **split1, char **split2, char *s1, char *s2, int exit_status);
-
+// Parser -
+char	**parse_cmds(char *s);
+void 	*free_split(char **parse_cmds);
 
 #endif

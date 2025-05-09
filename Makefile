@@ -1,8 +1,9 @@
 NAME = pipex
 
-SRCS = pipex.c pipex_check_utils.c pipex_fds_utils.c pipex_mem_utils.c pipex_path_utils.c pipex_proccess_utils.c
+SRCS = pipex.c pipex_path_utils.c pipex_error_utils.c pipex_struct_utils.c \
+	   pipex_proccess_utils.c pipex_shell_parser.c pipex_utils.c
 
-SRCS_BONUS = pipex_bonus.c pipex_check_utils_bonus.c pipex_fds_utils_bonus.c pipex_mem_utils_bonus.c pipex_path_utils_bonus.c pipex_proccess_utils_bonus.c
+SRCS_BONUS = 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -23,12 +24,9 @@ $(NAME): ${OBJS}
 	make -C libft bonus
 	${CC} ${OBJS} -I /libft -L libft/. -lft -o ${NAME}
 
-
-
 clean:
 	make -C libft clean
 	${RM} ${OBJS}
-	${RM} ${BONUS_OBJS}
 
 fclean: clean
 	make -C libft fclean

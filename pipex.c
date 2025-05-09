@@ -5,42 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 17:33:34 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/05 17:30:09 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/05 19:31:42 by edfreder          #+#    #+#             */
+/*   Updated: 2025/05/09 18:00:01 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void start_pipex(char **argv, int argc, char **envp)
+void	exec_pipeline(t_cmd *pids_lst, char **argv, char **envp)
 {
-	int	*fds_lst;
-	pid_t *pds_lst;
-	int files_fd[2];
-	int fds_total;
+	t_cmd	*curr;
+	char 	*cmd_path;
+	int 	i;
+	int 	status;
 
-	fds_total = (argc - 4) * 2 + 2;
-	open_files(files_fd, argv[1], argv[argc - 1]);
-	fds_lst = (int *)malloc(sizeof(int) * fds_total);
-	build_fds_lst(fds_lst, files_fd, argc);
-	pds_lst = (pid_t *)malloc(sizeof(pid_t) * (argc - 3));
-	if (!pds_lst)
+	curr = pids_lst;
+	i = 0;
+	while (curr)
 	{
-		free(fds_lst);
-		exit(1);
+		curr->pid = fork();
+		if (curr->pid == -1)
+			break ;
+		if (curr->pid == 0)
+		{
+			cmd_path = get_cmd_path(curr, envp);
+			status = validate_files_and_cmd(i, curr, cmd_path, argv);
+			if (status > 0)
+				clean_lst_exit(&pids_lst, status);
+			clean_lst_exit(&pids_lst, proccess_son(pids_lst, curr, envp, cmd_path));
+		}
+		curr = curr->next;
+		i++;
 	}
-	proccess_sons(pds_lst, fds_lst, argv, envp, argc - 3);
-	close_fds(fds_lst, fds_total, -1, 1);
-	proccess_father(fds_lst, pds_lst, argc - 3);
+	proccess_father(pids_lst);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
+	t_cmd	*pids_lst;
+
+	pids_lst = NULL;
 	if (argc >= 5)
 	{
-		make_init_checks(argv, argc, envp);
-		start_pipex(argv, argc, envp);
+		build_pids_lst(&pids_lst, argv, argc);
+		if (!ft_memcmp("here_doc", argv[1], ft_strlen(argv[1])))
+		{
+			// Here doc
+			ft_printf("oi");
+		}
+		else
+		// Start pipex
+			exec_pipeline(pids_lst, argv, envp);
 	}
-	ft_putstr_fd("Invalid number of arguments.\n", 2);
+	ft_putstr_fd("Invalid number of arguments!\n", 2);
 	exit(1);
 }
