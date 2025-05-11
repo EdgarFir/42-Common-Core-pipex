@@ -6,7 +6,7 @@
 #    By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 22:26:27 by edfreder          #+#    #+#              #
-#    Updated: 2025/05/07 00:40:03 by edfreder         ###   ########.fr        #
+#    Updated: 2025/05/11 23:19:11 by edfreder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS_P1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		  ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
 		  ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
 		  ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-		  ft_atoi.c ft_calloc.c ft_strdup.c \
+		  ft_atoi.c ft_calloc.c ft_strdup.c ft_strcmp.c \
 		  ft_format_c.c ft_format_i_d.c ft_format_p.c ft_format_s.c ft_format_u.c \
 		  ft_format_x.c ft_is_valid_conv.c ft_putnbr_base.c ft_putstr.c ft_printf.c
 

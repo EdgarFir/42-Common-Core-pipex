@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 22:23:21 by edfreder          #+#    #+#             */
-/*   Updated: 2025/04/05 22:23:27 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/10 01:43:45 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	ft_lstsize(t_list *lst)
 {
 	int		size;
+	t_list	*curr;
 
 	size = 0;
 	if (!lst)
 		return (0);
-	while (lst != NULL)
+	curr = lst;
+	while (curr)
 	{
-		lst = lst->next;
+		curr = curr->next;
 		size++;
 	}
 	return (size);

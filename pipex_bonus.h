@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:30:25 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/11 22:46:02 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/12 00:36:05 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#ifndef PIPEX_BONUS_H
 
-# define PIPEX_H
+# define PIPEX_BONUS_H
 
 # include "libft/libft.h"
 # include <stdio.h>
@@ -33,6 +33,8 @@ typedef struct s_cmd
 # define ENV_ERR ": No such file or directory\n"
 # define DUP2_ERR "Error duplicating file descriptor\n"
 
+/* Heredoc */
+void	write_temp_file(int fd, int temp_fd, char *limiter);
 /* Errors */
 int		clean_return_status(char **split1, char **split2, char *s1, int status);
 char	*clean_return_str(char **split1, char **split2, char *s1, char *s);
@@ -50,7 +52,7 @@ t_cmd	**build_pids_lst(t_cmd **pids_lst, char **argv, int argc, int mode);
 void	clean_lst_exit(t_cmd **pids_lst, int status);
 /* Processs*/
 int		redirect_stdin_stdout(t_cmd *pid);
-void	proc_father(t_cmd *pids_lst);
+void	proc_father(t_cmd *pids_lst, int here_doc);
 int		proc_son(t_cmd *pids_lst, t_cmd *pid, char **envp, char *cmd_path);
 int		exec_cmd(t_cmd *pid, char **envp, char *cmd_path);
 /*Parser */

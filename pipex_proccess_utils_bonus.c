@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_proccess_utils.c                             :+:      :+:    :+:   */
+/*   pipex_proccess_utils_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:44:32 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/11 22:43:37 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/11 22:44:10 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	redirect_stdin_stdout(t_cmd *pid)
 {
@@ -54,7 +54,7 @@ int	proc_son(t_cmd *pids_lst, t_cmd *pid, char **envp, char *cmd_path)
 	return (0);
 }
 
-void	proc_father(t_cmd *pids_lst)
+void	proc_father(t_cmd *pids_lst, int here_doc)
 {
 	t_cmd	*curr;
 	int		status;
@@ -76,5 +76,7 @@ void	proc_father(t_cmd *pids_lst)
 			exit_code = WEXITSTATUS(status);
 		curr = curr->next;
 	}
+	if (here_doc)
+		unlink("here_doc_temp");
 	clean_lst_exit(&pids_lst, exit_code);
 }

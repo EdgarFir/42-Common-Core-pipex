@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_struct_utils.c                               :+:      :+:    :+:   */
+/*   pipex_struct_utils_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 00:25:25 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/10 16:18:08 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/11 22:44:58 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	clean_lst_exit(t_cmd **pids_lst, int status)
 {

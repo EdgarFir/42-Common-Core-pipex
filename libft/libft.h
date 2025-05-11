@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:32:35 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/06 22:22:23 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/12 00:32:29 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int		ft_format_u(unsigned int u);
 int		ft_format_i_d(int n);
 int		ft_putnbr_base(unsigned long long n, char *base_s, int base_i);
 int		ft_putstr(char *s);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

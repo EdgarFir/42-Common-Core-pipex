@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_error_utils.c                                :+:      :+:    :+:   */
+/*   pipex_error_utils_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 19:42:23 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/11 19:40:32 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/05 19:38:50 by edfreder          #+#    #+#             */
+/*   Updated: 2025/05/11 22:44:32 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	valid_cmd(int cmd_i, char *cmd_path, char **argv)
 {
