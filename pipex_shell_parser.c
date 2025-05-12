@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 22:16:57 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/09 22:50:19 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/12 01:59:55 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**build(char **parsed_cmds, char *s, int cmds)
 		parsed_cmds[i] = split_cmd(s, j, delimiter);
 		if (!parsed_cmds[i])
 			return (free_split(parsed_cmds));
-		j += ft_strlen(parsed_cmds[i]);
+		j += ft_strlen(parsed_cmds[i]) + 1;
 		i++;
 	}
 	return (parsed_cmds);

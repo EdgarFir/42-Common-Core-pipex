@@ -1,0 +1,39 @@
+==510251== Memcheck, a memory error detector
+==510251== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==510251== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==510251== Command: ./pipex nofile cat wc\ -l tests/no_file/mypipex
+==510251== 
+==510251== Warning: invalid file descriptor -1 in syscall close()
+sh: nofile: ==510270== Warning: invalid file descriptor -1 in syscall close()
+No such file or directory
+==510270== Memcheck, a memory error detector
+==510270== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==510270== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==510270== Command: /usr/bin/wc -l
+==510270== 
+==510269== Warning: invalid file descriptor -1 in syscall close()
+==510269== 
+==510269== HEAP SUMMARY:
+==510269==     in use at exit: 0 bytes in 0 blocks
+==510269==   total heap usage: 53 allocs, 53 frees, 2,033 bytes allocated
+==510269== 
+==510269== All heap blocks were freed -- no leaks are possible
+==510269== 
+==510269== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==510270== 
+==510270== HEAP SUMMARY:
+==510270==     in use at exit: 0 bytes in 0 blocks
+==510270==   total heap usage: 269 allocs, 269 frees, 27,730 bytes allocated
+==510270== 
+==510270== All heap blocks were freed -- no leaks are possible
+==510270== 
+==510270== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==510251== Warning: invalid file descriptor -1 in syscall close()
+==510251== 
+==510251== HEAP SUMMARY:
+==510251==     in use at exit: 0 bytes in 0 blocks
+==510251==   total heap usage: 2 allocs, 2 frees, 64 bytes allocated
+==510251== 
+==510251== All heap blocks were freed -- no leaks are possible
+==510251== 
+==510251== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

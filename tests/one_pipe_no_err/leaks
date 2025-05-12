@@ -1,0 +1,39 @@
+==510196== Memcheck, a memory error detector
+==510196== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==510196== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==510196== Command: ./pipex tests/infile cat wc\ -l tests/one_pipe_no_err/mypipex
+==510196== 
+==510203== Memcheck, a memory error detector
+==510203== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==510203== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==510203== Command: /usr/bin/cat
+==510203== 
+==510204== Memcheck, a memory error detector
+==510204== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==510204== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==510204== Command: /usr/bin/wc -l
+==510204== 
+==510203== 
+==510203== HEAP SUMMARY:
+==510203==     in use at exit: 0 bytes in 0 blocks
+==510203==   total heap usage: 228 allocs, 228 frees, 156,326 bytes allocated
+==510203== 
+==510203== All heap blocks were freed -- no leaks are possible
+==510203== 
+==510203== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==510204== 
+==510204== HEAP SUMMARY:
+==510204==     in use at exit: 0 bytes in 0 blocks
+==510204==   total heap usage: 269 allocs, 269 frees, 27,730 bytes allocated
+==510204== 
+==510204== All heap blocks were freed -- no leaks are possible
+==510204== 
+==510204== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==510196== 
+==510196== HEAP SUMMARY:
+==510196==     in use at exit: 0 bytes in 0 blocks
+==510196==   total heap usage: 2 allocs, 2 frees, 64 bytes allocated
+==510196== 
+==510196== All heap blocks were freed -- no leaks are possible
+==510196== 
+==510196== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
